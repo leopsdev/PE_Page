@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme{
+    --color-brand-50: #eff6ff;
+    --color-brand-100: #dbeafe;
+    --color-brand-200: #bfdbfe;
+    --color-brand-300: #93c5fd;
+    --color-brand-400: #60a5fa;
+    --color-brand-500: #3b82f6;
+    --color-brand-600: #2563eb;
+    --color-brand-700: #1d4ed8;
+    --color-brand-800: #1e40af;
+    --color-brand-900: #1e3a8a;
+    --color-brand-950: #172554;
+    --color-blue-logo: #40a5dd;
+    --color-azulclaro:#8ED1E1;
+    --color-azulmedio:#3BA3D9;
+    --color-azulpetroleo:#49A3BD;
+    --color-azulacizentado:#839BB8;
+    --color-lilas:#C5A9D3;
+    --color-amarelolimao:#CDCC4F;
+    --color-amarelopastel:#FDD384;
+    --color-verdealface:#B2D88C;
+    --color-verdemedio:#79C487;
+    --color-verdebandeira:#4AA96C;
+    --color-pessego:#F9A482;
+    --color-laranja:#F8964D;
+    --color-coral:#F17E7B;
+    --color-vermelhovivo:#F55D50;
+    --color-vermelhoescuro:#CD5066;
+    --color-rosaclaro:#EE8AA3;
+    --color-rosamedio:#DE5E8B;
+    --color-rosaantigo:#C56A91;
+    --color-vinho:#B45E7D;
+
+    --background: #ffffff;
+    --foreground: #020617;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617;
+    /* Slate 950 */
+    --foreground: #f8fafc;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom Glassmorphism Utility */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(2, 6, 23, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
