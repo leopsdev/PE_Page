@@ -34,9 +34,11 @@ export default function Navbar() {
             <Image
               src="/Logo-Horizontal.svg"
               alt="Programa Eficiência Logo"
-              fill
+              width={210}
+              height={50}
               className="object-contain"
               priority
+              style={{ objectFit: "contain", objectPosition: "center" }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 if (e.currentTarget.parentElement) {
@@ -70,10 +72,10 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-
+          <Link href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Colaboradores</Link>
           <Link href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Novidades</Link>
           <Link href="/#contato" className="px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-blue-logo hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-md">
-            Contato
+            Login
           </Link>
         </nav>
 

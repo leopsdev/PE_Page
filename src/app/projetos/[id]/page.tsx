@@ -78,7 +78,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 src={project.image}
                 alt={`${project.title} logo`}
                 fill
+                sizes="100vw"
                 className="object-contain filter drop-shadow-md"
+                style={{ objectFit: "contain", objectPosition: "center" }}
               />
             </div>
           </div>
@@ -86,10 +88,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         {/* Content Section */}
         <div className="mt-20 pt-16 border-t border-border/50">
-          <div className="max-w-3xl">
+          <div className="">
             <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400 mb-6">Sobre o Projeto</h2>
             <div className="prose prose-lg prose-brand text-white">
-              <p className="leading-relaxed text-lg mb-12">
+              <p className="leading-relaxed text-justify text-lg mb-12">
                 {project.fullDescription}
               </p>
             </div>
@@ -106,7 +108,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       src={screenshot}
                       alt={`Screenshot ${idx + 1}`}
                       fill
+                      sizes="100vw"
                       className="object-cover hover:scale-105 transition-transform duration-500"
+                      style={{ objectFit: "cover", objectPosition: "center" }}
                     />
                   </div>
                 ))}
@@ -131,7 +135,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       src={otherProject.image}
                       alt={otherProject.title}
                       fill
+                      sizes="100vw"
                       className="object-contain filter drop-shadow-sm group-hover:scale-110 transition-transform duration-500"
+                      style={{ objectFit: "contain", objectPosition: "center" }}
                     />
                   </div>
                 </div>

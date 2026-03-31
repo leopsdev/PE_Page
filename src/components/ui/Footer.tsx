@@ -17,8 +17,10 @@ export default function Footer() {
               <Image
                 src="/img/Logo-Horizontal.svg"
                 alt="Programa Eficiência Logo"
-                fill
+                width={192}
+                height={48}
                 className="object-contain filter invert brightness-0 group-hover:opacity-0 transition-opacity duration-300"
+                style={{ objectFit: "contain", objectPosition: "center" }}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   if (e.currentTarget.parentElement) {

@@ -15,7 +15,11 @@ export default function Hero() {
           src="/img/banner.jpg"
           alt="Banner Programa Eficiência"
           fill
+          priority
+          loading="eager"
+          sizes="100vw"
           className="object-cover object-center"
+          style={{ objectFit: "cover", objectPosition: "center" }}
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
       </div>
