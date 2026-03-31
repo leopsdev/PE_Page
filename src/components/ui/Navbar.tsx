@@ -73,6 +73,7 @@ export default function Navbar() {
             </div>
           </div>
           <Link href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Colaboradores</Link>
+          <Link href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Parceiros</Link>
           <Link href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Novidades</Link>
           <Link href="/#contato" className="px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-blue-logo hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-md">
             Login

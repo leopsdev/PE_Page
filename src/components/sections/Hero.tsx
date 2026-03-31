@@ -8,10 +8,10 @@ export default function Hero() {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
       {/* Dynamic Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-brand-50 to-background dark:from-brand-950 dark:to-background z-0" />
-      
+
       {/* Background Image / Banner placeholder */}
       <div className="absolute inset-0 z-0 opacity-10 dark:opacity-20 animate-pulse-slow">
-        <Image 
+        <Image
           src="/img/banner.jpg"
           alt="Banner Programa Eficiência"
           fill
@@ -25,7 +25,7 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center gap-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -40,9 +40,9 @@ export default function Hero() {
               Eficiência
             </span>
           </h1> */}
-          <Image 
+          <Image
             src="/Logo-Horizontal.svg"
-            className="mx-auto md:mx-10 mb-6 w-full max-w-md"
+            className="mt-10 mx-auto md:mx-10 mb-6 w-full max-w-md"
             alt="Programa Eficiência Logo"
             width={500}
             height={100}
@@ -51,13 +51,13 @@ export default function Hero() {
             Projeto de Gestão Baseada em Dados para otimizar rotinas, aprimorar a qualidade do trabalho e incentivar o desenvolvimento contínuo de novas soluções.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-            <a 
+            <a
               href="#projetos"
               className="px-8 py-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)] whitespace-nowrap"
             >
               Conheça as Iniciativas
             </a>
-            <a 
+            <a
               href="#sobre"
               className="px-8 py-4 rounded-full border border-foreground/10 hover:border-brand-500 text-foreground font-bold transition-all hover:bg-brand-50 dark:hover:bg-brand-950/20 whitespace-nowrap"
             >
@@ -79,7 +79,7 @@ export default function Hero() {
           </div> */}
         </motion.div>
 
-        
+
       </div>
     </section>
   );
