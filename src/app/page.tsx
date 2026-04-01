@@ -5,6 +5,7 @@ import InstagramFeed from "@/components/sections/InstagramFeed";
 import Footer from "@/components/ui/Footer";
 import ProjectsCarousel from "@/components/sections/ProjectsCarousel";
 import Collaborators from "@/components/sections/Collaborators";
+import Partners from "@/components/sections/Partners";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       
       <About />
       <ProjectsCarousel />
+      <Partners />
       <Collaborators />
       <InstagramFeed />
       <Footer />

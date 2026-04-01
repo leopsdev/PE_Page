@@ -142,7 +142,7 @@ export default function ProjectsCarousel() {
           {/* Left Arrow */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-black/20 hover:bg-black/50 backdrop-blur-md rounded-full text-white/80 hover:text-white transition-all border border-white/10 shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100"
+            className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-transparent backdrop-blur-md hover:bg-blue-logo/30 rounded-full text-white/80 hover:text-white transition-all border border-white/10 shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100"
             aria-label="Voltar"
           >
             <ChevronLeft size={36} strokeWidth={2} />
@@ -151,7 +151,7 @@ export default function ProjectsCarousel() {
           {/* Right Arrow */}
           <button
             onClick={handleNext}
-            className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-black/20 hover:bg-black/50 backdrop-blur-md rounded-full text-white/80 hover:text-white transition-all border border-white/10 shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100"
+            className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-transparent backdrop-blur-md hover:bg-blue-logo/30 rounded-full text-white/80 hover:text-white transition-all border border-white/10 shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100"
             aria-label="Avançar"
           >
             <ChevronRight size={36} strokeWidth={2} />

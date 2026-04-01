@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import AuthProvider from "@/components/providers/AuthProvider";
+import { UserMenuFloat } from "@/components/ui/UserMenuFloat";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,7 +30,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        {children}
+        <AuthProvider>
+          {children}
+          <UserMenuFloat />
+        </AuthProvider>
       </body>
     </html>
   );

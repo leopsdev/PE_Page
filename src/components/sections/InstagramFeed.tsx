@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function InstagramFeed() {
   return (
-    <section id="instagram" className="py-24 bg-foreground/[0.02]">
+    <section id="instagram" className="py-24 bg-brand-950/80">
       <div className="container mx-auto px-6 md:px-12 text-center">
         <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

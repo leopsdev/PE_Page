@@ -59,7 +59,7 @@ export default function Hero() {
             </a>
             <a
               href="#sobre"
-              className="px-8 py-4 rounded-full border border-foreground/10 hover:border-brand-500 text-foreground font-bold transition-all hover:bg-brand-50 dark:hover:bg-brand-950/20 whitespace-nowrap"
+              className="px-8 py-4 bg-transparent backdrop-blur-sm rounded-full border border-foreground/10 hover:border-brand-500 text-foreground font-bold transition-all hover:bg-brand-50 dark:hover:bg-brand-950/20 whitespace-nowrap"
             >
               Saiba Mais
             </a>
