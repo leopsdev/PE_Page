@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Plus, Trash2, Edit2, Loader2, Save } from "lucide-react";
 
@@ -10,6 +11,7 @@ interface Project {
   shortDescription: string;
   fullDescription: string;
   image: string;
+  link: string;
   technologies: string;
   themePrimary: string;
   themeSecondary: string;
@@ -17,6 +19,7 @@ interface Project {
 }
 
 export function ProjectAdminModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const router = useRouter();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -60,6 +63,7 @@ export function ProjectAdminModal({ isOpen, onClose }: { isOpen: boolean; onClos
       setEditingId(null);
       setFormData({});
       await fetchProjects();
+      router.refresh();
     } catch (error) {
       console.error(error);
     } finally {
@@ -72,6 +76,7 @@ export function ProjectAdminModal({ isOpen, onClose }: { isOpen: boolean; onClos
     try {
       await fetch(`/api/projects/${id}`, { method: "DELETE" });
       setProjects(projects.filter(p => p.id !== id));
+      router.refresh();
     } catch (e) {
       console.error(e);
     }
@@ -96,6 +101,7 @@ export function ProjectAdminModal({ isOpen, onClose }: { isOpen: boolean; onClos
               <input required placeholder="Descrição Curta" value={formData.shortDescription || ""} onChange={e => setFormData({ ...formData, shortDescription: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <textarea placeholder="Descrição Completa" value={formData.fullDescription || ""} onChange={e => setFormData({ ...formData, fullDescription: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white h-24" />
               <input placeholder="URL da Imagem de Capa" value={formData.image || ""} onChange={e => setFormData({ ...formData, image: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
+              <input placeholder="Link do Site / Acesso Oficial" value={formData.link || ""} onChange={e => setFormData({ ...formData, link: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <input placeholder="Tecnologias (separadas por vírgula)" value={formData.technologies || ""} onChange={e => setFormData({ ...formData, technologies: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <div className="flex gap-2">
                 <button type="button" onClick={() => { setEditingId(null); setFormData({}); }} className="flex-1 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 transition">Cancelar</button>

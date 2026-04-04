@@ -2,14 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { collaborators } from "@/data/projects";
 
-// Extraia colaboradores únicos de todos os projetos
-const allCollaborators = collaborators;
-const uniqueCollaborators = Array.from(new Map(allCollaborators.map(c => [c.name, c])).values());
-
-export default function Collaborators() {
-  if (uniqueCollaborators.length === 0) return null;
+export default function Collaborators({ collaborators = [] }: { collaborators?: any[] }) {
+  if (collaborators.length === 0) return null;
 
   return (
     <section id="colaboradores" className="py-24 bg-foreground/[0.02]">
@@ -32,7 +27,7 @@ export default function Collaborators() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {uniqueCollaborators.map((collab, idx) => (
+          {collaborators.map((collab: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}

@@ -5,11 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { projects } from "@/data/projects";
 import { useSession } from "next-auth/react";
 import { LoginModal } from "@/components/auth/LoginModal";
 
-export default function Navbar() {
+export default function Navbar({ projects = [] }: { projects?: any[] }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
@@ -59,14 +58,13 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
-            <Link href="/#sobre" className="text-foreground hover:text-blue-logo transition-colors">Sobre</Link>
 
             <div className="relative group">
               <button className="flex items-center gap-1 text-foreground hover:text-blue-logo transition-colors focus:outline-none py-2">
                 Projetos <ChevronDown size={14} className="transition-transform duration-300 group-hover:rotate-180" />
               </button>
               <div className="absolute left-1/2 -translate-x-1/2 top-full w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top pt-2">
-                <div className="otherglass backdrop-blur-md rounded-md shadow-xl shadow-black/5 border-gray-700 overflow-hidden py-2 flex flex-col">
+                <div className="bg-brand-950 backdrop-blur-md rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/10 overflow-hidden py-2 flex flex-col">
                   {projects.map((project) => (
                     <Link
                       key={project.id}
@@ -79,9 +77,9 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-            <Link href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Colaboradores</Link>
-            <Link href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Parceiros</Link>
-            <Link href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Novidades</Link>
+            <Link href="/#colaboradores" className="text-foreground hover:text-blue-logo transition-colors">Colaboradores</Link>
+            <Link href="/#parceiros" className="text-foreground hover:text-blue-logo transition-colors">Parceiros</Link>
+            <Link href="/#novidades" className="text-foreground hover:text-blue-logo transition-colors">Novidades</Link>
             {hasMounted && status !== "authenticated" && (
               <button onClick={() => setLoginModalOpen(true)} className="px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-blue-logo hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-md focus:outline-none cursor-pointer">
                 Login

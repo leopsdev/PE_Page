@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function PUT(request: Request, context: { params: { id: string } }) {
+export async function PUT(request: Request, context: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await context.params;
     const body = await request.json();
@@ -13,6 +13,7 @@ export async function PUT(request: Request, context: { params: { id: string } })
         shortDescription: body.shortDescription,
         fullDescription: body.fullDescription,
         image: body.image,
+        link: body.link,
         technologies: JSON.stringify(body.technologies || []),
         themePrimary: body.themePrimary,
         themeSecondary: body.themeSecondary,
@@ -26,7 +27,7 @@ export async function PUT(request: Request, context: { params: { id: string } })
   }
 }
 
-export async function DELETE(request: Request, context: { params: { id: string } }) {
+export async function DELETE(request: Request, context: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await context.params;
     await prisma.project.delete({

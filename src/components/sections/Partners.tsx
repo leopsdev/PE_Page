@@ -2,17 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { collaborators } from "@/data/projects";
 
-// Extraia colaboradores únicos de todos os projetos
-const allCollaborators = collaborators;
-const uniqueCollaborators = Array.from(new Map(allCollaborators.map(c => [c.name, c])).values());
-
-export default function Collaborators() {
-  if (uniqueCollaborators.length === 0) return null;
+export default function Partners({ partners = [] }: { partners?: any[] }) {
+  if (partners.length === 0) return null;
 
   return (
-    <section id="colaboradores" className="py-24 bg-foreground/[0.02]">
+    <section id="parceiros" className="py-24 bg-foreground/[0.02]">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -32,7 +27,7 @@ export default function Collaborators() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {uniqueCollaborators.map((collab, idx) => (
+          {partners.map((partner: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -43,21 +38,18 @@ export default function Collaborators() {
             >
               {/* Photo area */}
               <div className="w-24 h-24 flex-shrink-0 bg-[#d9d9d9] rounded-xl relative overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                {collab.image ? (
-                  <Image src={collab.image} alt={collab.name} fill className="object-cover" />
+                {partner.image ? (
+                  <Image src={partner.image} alt={partner.name} fill className="object-cover" />
                 ) : (
-                  <span className="text-black/60 font-medium text-sm">Foto</span>
+                  <span className="text-black/60 font-medium text-sm">Logo</span>
                 )}
               </div>
 
               {/* Info area */}
               <div className="flex flex-col justify-center">
-                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider mb-2">
-                  {collab.name}
+                <h3 className="text-xl md:text-2xl font-bold text-white tracking-wider mb-2">
+                  {partner.name}
                 </h3>
-                <p className="text-white/80 font-medium text-sm md:text-base">
-                  {collab.role}
-                </p>
               </div>
             </motion.div>
           ))}

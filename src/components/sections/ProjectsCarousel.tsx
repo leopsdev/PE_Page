@@ -5,21 +5,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects } from "@/data/projects";
 
-// Default images if no screenshot is provided, ensuring high-quality banners for the carousel
-const fallbackImages = [
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2670&auto=format&fit=crop",
-  "/screenshots/Banner-equipe.png",
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop"
-];
+export default function ProjectsCarousel({ projects = [] }: { projects?: any[] }) {
+  // Configura fallbacks se a screenshot estiver nula pra ter banners high-quality
+  const fallbackImages = [
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2670&auto=format&fit=crop",
+    "/screenshots/Banner-equipe.png",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop"
+  ];
 
-const carouselData = projects.map((p, idx) => ({
-  ...p,
-  bannerImage: (p.screenshots && p.screenshots.length > 0) ? p.screenshots[0] : fallbackImages[idx % fallbackImages.length]
-}));
+  const carouselData = projects.map((p, idx) => ({
+    ...p,
+    bannerImage: (p.screenshots && p.screenshots.length > 0) ? p.screenshots[0].url : fallbackImages[idx % fallbackImages.length]
+  }));
 
-export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 

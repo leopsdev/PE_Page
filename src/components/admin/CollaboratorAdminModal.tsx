@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Trash2, Edit2, Loader2, Save } from "lucide-react";
 
@@ -12,6 +13,7 @@ interface Collaborator {
 }
 
 export function CollaboratorAdminModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const router = useRouter();
   const [collaborators, setCollaborators] = useState<Collaborator[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -50,6 +52,7 @@ export function CollaboratorAdminModal({ isOpen, onClose }: { isOpen: boolean; o
       setEditingId(null);
       setFormData({});
       await fetchCollaborators();
+      router.refresh();
     } catch (error) {
       console.error(error);
     } finally {
@@ -62,6 +65,7 @@ export function CollaboratorAdminModal({ isOpen, onClose }: { isOpen: boolean; o
     try {
       await fetch(`/api/collaborators/${id}`, { method: "DELETE" });
       setCollaborators(collaborators.filter(c => c.id !== id));
+      router.refresh();
     } catch (e) {
       console.error(e);
     }

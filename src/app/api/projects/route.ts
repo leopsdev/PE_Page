@@ -21,6 +21,7 @@ export async function POST(request: Request) {
         shortDescription: body.shortDescription,
         fullDescription: body.fullDescription,
         image: body.image || "",
+        link: body.link || "",
         technologies: JSON.stringify(body.technologies || []),
         themePrimary: body.themePrimary || "bg-blue-600",
         themeSecondary: body.themeSecondary || "text-blue-300",

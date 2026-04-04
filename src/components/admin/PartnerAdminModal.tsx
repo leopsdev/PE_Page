@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Trash2, Edit2, Loader2, Save } from "lucide-react";
 
@@ -11,6 +12,7 @@ interface Partner {
 }
 
 export function PartnerAdminModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const router = useRouter();
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -49,6 +51,7 @@ export function PartnerAdminModal({ isOpen, onClose }: { isOpen: boolean; onClos
       setEditingId(null);
       setFormData({});
       await fetchPartners();
+      router.refresh();
     } catch (error) {
       console.error(error);
     } finally {
@@ -61,6 +64,7 @@ export function PartnerAdminModal({ isOpen, onClose }: { isOpen: boolean; onClos
     try {
       await fetch(`/api/partners/${id}`, { method: "DELETE" });
       setPartners(partners.filter(p => p.id !== id));
+      router.refresh();
     } catch (e) {
       console.error(e);
     }

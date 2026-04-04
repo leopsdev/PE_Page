@@ -26,6 +26,7 @@ model Project {
   themePrimary     String
   themeSecondary   String
   themeLight       String
+  link             String?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   screenshots      ProjectScreenshot[]
