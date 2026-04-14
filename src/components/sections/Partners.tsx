@@ -26,33 +26,50 @@ export default function Partners({ partners = [] }: { partners?: any[] }) {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {partners.map((partner: any, idx: number) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="flex items-center gap-6 p-5 rounded-2xl bg-foreground/5 border border-white/5 shadow-lg shadow-black/20 hover:border-white/10 hover:bg-foreground/10 transition-all group"
-            >
-              {/* Photo area */}
-              <div className="w-24 h-24 flex-shrink-0 bg-[#d9d9d9] rounded-xl relative overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                {partner.image ? (
-                  <Image src={partner.image} alt={partner.name} fill className="object-cover" />
-                ) : (
-                  <span className="text-black/60 font-medium text-sm">Logo</span>
-                )}
-              </div>
+        <style>{`
+          @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 12px)); }
+          }
+          .animate-carousel {
+            animation: scroll 40s linear infinite;
+            width: max-content;
+          }
+          .animate-carousel:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
 
-              {/* Info area */}
-              <div className="flex flex-col justify-center">
-                <h3 className="text-xl md:text-2xl font-bold text-white tracking-wider mb-2">
-                  {partner.name}
-                </h3>
+        <div className="relative overflow-hidden w-full flex select-none">
+          {/* Fading Gradients (optional for a cool effect) */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+          <div className="animate-carousel flex gap-6 items-center">
+            {/* Duplicating the array multiple times to ensure enough items */}
+            {[...partners, ...partners, ...partners, ...partners].map((partner: any, idx: number) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center gap-4 p-5 rounded-2xl bg-foreground/5 shadow-lg shadow-black/20 hover:bg-foreground/10 transition-all w-[240px] md:w-[280px] shrink-0"
+              >
+                {/* Photo area */}
+                <div className="w-60 h-60 md:h-60 flex-shrink-0 bg-transparent rounded-xl relative overflow-hidden flex items-center justify-center">
+                  {partner.image ? (
+                    <Image src={partner.image} alt={partner.name} fill className="object-cover rounded-lg" />
+                  ) : (
+                    <span className="text-gray-400 font-bold text-xl uppercase tracking-widest">Logo</span>
+                  )}
+                </div>
+
+                {/* Info area */}
+                <div className="flex flex-col justify-center text-center w-full px-2">
+                  <h3 className="text-base md:text-lg font-medium text-white/90 tracking-wide truncate">
+                    {partner.name}
+                  </h3>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
