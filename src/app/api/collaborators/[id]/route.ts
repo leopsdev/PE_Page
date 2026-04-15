@@ -10,7 +10,9 @@ export async function PUT(request: Request, context: { params: Promise<{ id: str
       where: { id },
       data: {
         name: body.name,
-        role: body.role,
+        role: "",
+        lattes: body.lattes,
+        linkedin: body.linkedin,
         image: body.image,
       },
     });

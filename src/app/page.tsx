@@ -6,6 +6,7 @@ import Footer from "@/components/ui/Footer";
 import ProjectsCarousel from "@/components/sections/ProjectsCarousel";
 import Collaborators from "@/components/sections/Collaborators";
 import Partners from "@/components/sections/Partners";
+import Contact from "@/components/sections/Contact";
 import { prisma } from "@/lib/prisma";
 
 export const revalidate = 0; // Ensures the page is always fresh
@@ -33,6 +34,7 @@ export default async function Home() {
       <Partners partners={partners} />
       <Collaborators collaborators={collaborators} />
       <InstagramFeed />
+      <Contact />
       <Footer />
     </main>
   );

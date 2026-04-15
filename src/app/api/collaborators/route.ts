@@ -18,7 +18,9 @@ export async function POST(request: Request) {
     const collab = await prisma.collaborator.create({
       data: {
         name: body.name,
-        role: body.role,
+        role: "",
+        lattes: body.lattes || "",
+        linkedin: body.linkedin || "",
         image: body.image || "",
       },
     });

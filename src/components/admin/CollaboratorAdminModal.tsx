@@ -8,8 +8,10 @@ import { X, Trash2, Edit2, Loader2, Save } from "lucide-react";
 interface Collaborator {
   id: string;
   name: string;
-  role: string;
-  image: string;
+  role?: string;
+  lattes?: string;
+  linkedin?: string;
+  image?: string;
 }
 
 export function CollaboratorAdminModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
@@ -86,7 +88,8 @@ export function CollaboratorAdminModal({ isOpen, onClose }: { isOpen: boolean; o
             <form onSubmit={handleSave} className="space-y-4">
               <h3 className="text-lg font-medium text-white mb-2">{editingId ? "Editar Colaborador" : "Novo Colaborador"}</h3>
               <input required placeholder="Nome do Colaborador" value={formData.name || ""} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
-              <input required placeholder="Cargo / Função" value={formData.role || ""} onChange={e => setFormData({ ...formData, role: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
+              <input placeholder="Link do Currículo Lattes" value={formData.lattes || ""} onChange={e => setFormData({ ...formData, lattes: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
+              <input placeholder="Link do LinkedIn" value={formData.linkedin || ""} onChange={e => setFormData({ ...formData, linkedin: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <input placeholder="URL da Foto do Perfil (opcional)" value={formData.image || ""} onChange={e => setFormData({ ...formData, image: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <div className="flex gap-2">
                 <button type="button" onClick={() => { setEditingId(null); setFormData({}); }} className="flex-1 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 transition">Cancelar</button>
@@ -107,7 +110,10 @@ export function CollaboratorAdminModal({ isOpen, onClose }: { isOpen: boolean; o
                   <div key={c.id} className="bg-white/5 border border-white/10 rounded-lg p-4 flex justify-between items-center hover:bg-white/10 transition">
                     <div>
                       <h4 className="font-semibold text-white">{c.name}</h4>
-                      <p className="text-sm text-white/50 line-clamp-1">{c.role}</p>
+                      <div className="flex gap-2 mt-1">
+                        {c.lattes && <span className="text-xs px-2 py-0.5 bg-brand-500/20 text-brand-300 rounded-full">Lattes</span>}
+                        {c.linkedin && <span className="text-xs px-2 py-0.5 bg-blue-500/20 text-blue-300 rounded-full">LinkedIn</span>}
+                      </div>
                     </div>
                     <div className="flex gap-2">
                       <button onClick={() => { setEditingId(c.id); setFormData(c); }} className="p-2 text-white/50 hover:text-blue-400 bg-white/5 rounded-md"><Edit2 size={16} /></button>
