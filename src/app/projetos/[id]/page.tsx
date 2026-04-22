@@ -15,6 +15,11 @@ interface ProjectPageProps {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const resolvedParams = await params;
 
+  const projects = await prisma.project.findMany({
+    orderBy: { createdAt: "desc" },
+    include: { screenshots: true }
+  });
+
   const project = await prisma.project.findUnique({
     where: { id: resolvedParams.id },
     include: { screenshots: true }
@@ -39,7 +44,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="min-h-screen bg-foreground/[0.02] text-foreground pt-32 pb-20">
-      <Navbar />
+      <Navbar projects={projects as any[]} />
 
       <div className="container mx-auto px-6 md:px-12 max-w-5xl">
 
@@ -56,11 +61,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="flex flex-col md:flex-row gap-12 items-start">
           <div className="flex-1 space-y-6">
             {project.link ? (
-              <Link href={project.link} target="_blank" className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide bg-foreground text-background hover:bg-blue-logo hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-md">
+              <Link href={project.link} target="_blank" className="inline-block px-4 py-1.5 rounded-full bg-white hover:bg-blue-logo hover:text-white text-blue-logo font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)] whitespace-nowrap">
                 Acesse
               </Link>
             ) : null}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-logo">
               {project.title}
             </h1>
             <p className="text-xl md:text-2xl text-white leading-relaxed font-light">

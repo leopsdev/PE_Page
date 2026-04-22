@@ -52,23 +52,23 @@ export default function Collaborators({ collaborators = [] }: { collaborators?: 
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-1">
                   {collab.lattes && (
-                    <a 
-                      href={collab.lattes.startsWith("http") ? collab.lattes : `https://${collab.lattes}`} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href={collab.lattes.startsWith("http") ? collab.lattes : `https://${collab.lattes}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-xs px-3 py-1.5 bg-brand-500/20 text-brand-300 rounded-full hover:bg-brand-500/30 transition border border-brand-500/20 font-medium"
+                      className="text-xs px-3 py-1.5 bg-transparent backdrop-blur-sm rounded-full border border-foreground/10 hover:border-brand-500 text-foreground font-bold transition-all hover:bg-brand-50 dark:hover:bg-brand-950/20 whitespace-nowrap"
                     >
                       Currículo Lattes
                     </a>
                   )}
                   {collab.linkedin && (
-                    <a 
-                      href={collab.linkedin.startsWith("http") ? collab.linkedin : `https://${collab.linkedin}`} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href={collab.linkedin.startsWith("http") ? collab.linkedin : `https://${collab.linkedin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-xs px-3 py-1.5 bg-blue-500/20 text-blue-300 rounded-full hover:bg-blue-500/30 transition border border-blue-500/20 font-medium"
+                      className="text-xs px-3 py-1.5 bg-transparent backdrop-blur-sm rounded-full border border-foreground/10 hover:border-brand-500 text-foreground font-bold transition-all hover:bg-brand-50 dark:hover:bg-brand-950/20 whitespace-nowrap"
                     >
                       LinkedIn
                     </a>

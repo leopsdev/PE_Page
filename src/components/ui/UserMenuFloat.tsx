@@ -3,11 +3,12 @@
 import { useSession, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, LogOut, Settings, LayoutList, BookUser, Handshake } from "lucide-react";
+import { User, LogOut, Settings, LayoutList, Newspaper, BookUser, Handshake } from "lucide-react";
 import Image from "next/image";
 import { ProjectAdminModal } from "../admin/ProjectAdminModal";
 import { CollaboratorAdminModal } from "../admin/CollaboratorAdminModal";
 import { PartnerAdminModal } from "../admin/PartnerAdminModal";
+import { NewsAdminModal } from "../admin/NewsAdminModal";
 
 export function UserMenuFloat() {
   const { data: session, status } = useSession();
@@ -15,6 +16,7 @@ export function UserMenuFloat() {
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   const [collabModalOpen, setCollabModalOpen] = useState(false);
   const [partnerModalOpen, setPartnerModalOpen] = useState(false);
+  const [newsModalOpen, setNewsModalOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,6 +66,10 @@ export function UserMenuFloat() {
                   <Handshake size={16} />
                   Parceiros
                 </button>
+                <button onClick={() => openModal(setNewsModalOpen)} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors text-left">
+                  <Newspaper size={16} />
+                  Notícias
+                </button>
                 <button className="flex items-center gap-2 w-full px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors text-left">
                   <Settings size={16} />
                   Configurações
@@ -94,6 +100,7 @@ export function UserMenuFloat() {
       <ProjectAdminModal isOpen={projectModalOpen} onClose={() => setProjectModalOpen(false)} />
       <CollaboratorAdminModal isOpen={collabModalOpen} onClose={() => setCollabModalOpen(false)} />
       <PartnerAdminModal isOpen={partnerModalOpen} onClose={() => setPartnerModalOpen(false)} />
+      <NewsAdminModal isOpen={newsModalOpen} onClose={() => setNewsModalOpen(false)} />
     </>
   );
 }

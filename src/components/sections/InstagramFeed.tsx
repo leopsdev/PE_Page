@@ -24,7 +24,7 @@ export default function InstagramFeed() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
-            Acompanhe o <span className="text-brand-500">Feed</span>
+            Acompanhe o <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400">Feed</span>
           </h2>
           <p className="text-lg text-foreground/70 mb-12 max-w-2xl mx-auto font-medium">
             Fique por dentro das últimas novidades e projetos do Programa Eficiência diretamente no nosso Instagram.

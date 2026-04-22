@@ -19,10 +19,11 @@ model User {
 model Project {
   id               String   @id @default(uuid())
   title            String
+  nickname         String?
   shortDescription String
   fullDescription  String
   image            String
-  technologies     String // We will store this as JSON stringified array since sqlite doesn't support String[] natively
+  technologies     String 
   themePrimary     String
   themeSecondary   String
   themeLight       String
@@ -56,4 +57,17 @@ model Partner {
   image     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model ClippingNews {
+  id        String   @id @default(uuid())
+  title     String
+  author    String   @default("Redação")
+  content   String
+  sourceUrl String
+  imageUrl  String?
+  videoUrl    String?
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

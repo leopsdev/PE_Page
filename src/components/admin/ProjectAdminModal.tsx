@@ -8,6 +8,7 @@ import { X, Plus, Trash2, Edit2, Loader2, Save } from "lucide-react";
 interface Project {
   id: string;
   title: string;
+  nickname?: string;
   shortDescription: string;
   fullDescription: string;
   image: string;
@@ -98,9 +99,10 @@ export function ProjectAdminModal({ isOpen, onClose }: { isOpen: boolean; onClos
             <form onSubmit={handleSave} className="space-y-4">
               <h3 className="text-lg font-medium text-white mb-2">{editingId ? "Editar Projeto" : "Novo Projeto"}</h3>
               <input required placeholder="Título" value={formData.title || ""} onChange={e => setFormData({ ...formData, title: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
+              <input placeholder="Apelido / Sigla (Ex: SIMEC)" value={formData.nickname || ""} onChange={e => setFormData({ ...formData, nickname: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <input required placeholder="Descrição Curta" value={formData.shortDescription || ""} onChange={e => setFormData({ ...formData, shortDescription: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <textarea placeholder="Descrição Completa" value={formData.fullDescription || ""} onChange={e => setFormData({ ...formData, fullDescription: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white h-24" />
-              <input placeholder="URL da Imagem de Capa" value={formData.image || ""} onChange={e => setFormData({ ...formData, image: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
+              <input placeholder="URL da Logo / Imagem de Capa" value={formData.image || ""} onChange={e => setFormData({ ...formData, image: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <input placeholder="Link do Site / Acesso Oficial" value={formData.link || ""} onChange={e => setFormData({ ...formData, link: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <input placeholder="Tecnologias (separadas por vírgula)" value={formData.technologies || ""} onChange={e => setFormData({ ...formData, technologies: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
               <div className="flex gap-2">

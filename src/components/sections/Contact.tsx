@@ -27,7 +27,7 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -36,7 +36,7 @@ export default function Contact() {
         >
           {/* Note: Substitua "seu-email@exemplo.com" pelo email real que vai receber as mensagens */}
           <form action="https://formsubmit.co/seu-email@exemplo.com" method="POST" className="space-y-6">
-            
+
             {/* FormSubmit Configurations */}
             <input type="hidden" name="_subject" value="Novo contato do site - Programa Eficiência!" />
             <input type="hidden" name="_captcha" value="false" /> {/* Desativa o captcha pesado do FormSubmit se preferir, ou mude para true */}
@@ -47,11 +47,11 @@ export default function Contact() {
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <User size={20} className="text-white/40" />
                 </div>
-                <input 
-                  type="text" 
-                  name="nome" 
-                  required 
-                  placeholder="Seu Nome Completo" 
+                <input
+                  type="text"
+                  name="nome"
+                  required
+                  placeholder="Seu Nome Completo"
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50 transition-all"
                 />
               </div>
@@ -60,11 +60,11 @@ export default function Contact() {
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <Mail size={20} className="text-white/40" />
                 </div>
-                <input 
-                  type="email" 
-                  name="email" 
-                  required 
-                  placeholder="Seu E-mail" 
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Seu E-mail"
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50 transition-all"
                 />
               </div>
@@ -73,28 +73,28 @@ export default function Contact() {
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <MessageSquare size={20} className="text-white/40" />
                 </div>
-                <input 
-                  type="text" 
-                  name="assunto" 
-                  required 
-                  placeholder="Assunto" 
+                <input
+                  type="text"
+                  name="assunto"
+                  required
+                  placeholder="Assunto"
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50 transition-all"
                 />
               </div>
 
               <div className="relative">
-                <textarea 
-                  name="mensagem" 
-                  required 
+                <textarea
+                  name="mensagem"
+                  required
                   rows={4}
-                  placeholder="Como podemos ajudar você hoje?" 
+                  placeholder="Como podemos ajudar você hoje?"
                   className="w-full bg-black/20 border border-white/10 rounded-xl py-3 px-4 text-white placeholder:text-white/40 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50 transition-all resize-none"
                 />
               </div>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="w-full py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold flex items-center justify-center gap-2 transition-colors shadow-lg shadow-brand-500/20"
             >
               <Send size={20} />

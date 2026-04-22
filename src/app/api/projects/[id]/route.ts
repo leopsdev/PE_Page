@@ -10,6 +10,7 @@ export async function PUT(request: Request, context: { params: Promise<{ id: str
       where: { id },
       data: {
         title: body.title,
+        nickname: body.nickname,
         shortDescription: body.shortDescription,
         fullDescription: body.fullDescription,
         image: body.image,

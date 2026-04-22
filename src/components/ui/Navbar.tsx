@@ -79,7 +79,7 @@ export default function Navbar({ projects = [] }: { projects?: any[] }) {
             </div>
             <Link href="/#colaboradores" className="text-foreground hover:text-blue-logo transition-colors">Colaboradores</Link>
             <Link href="/#parceiros" className="text-foreground hover:text-blue-logo transition-colors">Parceiros</Link>
-            <Link href="/#novidades" className="text-foreground hover:text-blue-logo transition-colors">Novidades</Link>
+            <Link href="/noticias" className="text-foreground hover:text-blue-logo transition-colors">Notícias</Link>
             {hasMounted && status !== "authenticated" && (
               <button onClick={() => setLoginModalOpen(true)} className="px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-blue-logo hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-md focus:outline-none cursor-pointer">
                 Login
@@ -140,7 +140,7 @@ export default function Navbar({ projects = [] }: { projects?: any[] }) {
                 )}
               </div>
 
-              <Link onClick={() => setMobileMenuOpen(false)} href="/#instagram" className="text-foreground hover:text-blue-logo transition-colors">Novidades</Link>
+              <Link onClick={() => setMobileMenuOpen(false)} href="/noticias" className="text-foreground hover:text-blue-logo transition-colors">Notícias</Link>
               {hasMounted && (status !== "authenticated" ? (
                 <button onClick={() => { setMobileMenuOpen(false); setLoginModalOpen(true); }} className="px-6 py-2 rounded-full bg-white text-brand-950 hover:bg-blue-logo hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-md focus:outline-none w-full text-center cursor-pointer">
                   Login

@@ -18,6 +18,7 @@ export async function POST(request: Request) {
     const project = await prisma.project.create({
       data: {
         title: body.title,
+        nickname: body.nickname || "",
         shortDescription: body.shortDescription,
         fullDescription: body.fullDescription,
         image: body.image || "",
