@@ -5,6 +5,8 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import { prisma } from "@/lib/prisma";
+import ReactMarkdown from "react-markdown";
+import ProjectMediaCarousel from "@/components/sections/ProjectMediaCarousel";
 
 interface ProjectPageProps {
   params: Promise<{
@@ -106,39 +108,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Content Section */}
         <div className="mt-20 pt-16 border-t border-gray-500/50">
           <div className="">
-            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400 mb-6">Sobre o Projeto</h2>
-            <div className="prose prose-lg prose-brand text-white">
-              <p className="leading-relaxed text-justify text-lg mb-12">
+            <h2 className="text-3xl font-bold text-blue-logo mb-6">Sobre o Projeto</h2>
+            <div className="prose prose-lg prose-invert prose-brand text-white max-w-none">
+              <ReactMarkdown>
                 {project.fullDescription}
-              </p>
+              </ReactMarkdown>
             </div>
           </div>
 
-          {/* Screenshots Section */}
+          {/* Media Carousel Section */}
           {project.screenshots && project.screenshots.length > 0 && (
             <div className="mt-16">
-              <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400 mb-8">Fotos do Sistema</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {project.screenshots.map((screenshot: any, idx: number) => (
-                  <div key={idx} className="relative aspect-video rounded-2xl overflow-hidden border border-border/50 shadow-lg">
-                    <Image
-                      src={screenshot.url}
-                      alt={`Screenshot ${idx + 1}`}
-                      fill
-                      sizes="100vw"
-                      className="object-cover hover:scale-105 transition-transform duration-500"
-                      style={{ objectFit: "cover", objectPosition: "center" }}
-                    />
-                  </div>
-                ))}
-              </div>
+              <h2 className="text-3xl font-bold text-blue-logo mb-8">Galeria do Projeto</h2>
+              <ProjectMediaCarousel media={project.screenshots} />
             </div>
           )}
         </div>
 
         {/* Carousel / Outros Projetos Section */}
         <div className="mt-32 pt-16 border-t border-gray-500/50">
-          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400 mb-8">Outros Projetos</h2>
+          <h2 className="text-3xl font-bold text-blue-logo mb-8">Outros Projetos</h2>
           <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide">
             {allProjects.filter((p: any) => p.id !== project.id).map((otherProject: any) => (
               <Link

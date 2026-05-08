@@ -5,6 +5,7 @@ export async function GET() {
   try {
     const projects = await prisma.project.findMany({
       orderBy: { createdAt: "desc" },
+      include: { screenshots: true },
     });
     return NextResponse.json(projects);
   } catch (error) {
@@ -27,6 +28,9 @@ export async function POST(request: Request) {
         themePrimary: body.themePrimary || "bg-blue-600",
         themeSecondary: body.themeSecondary || "text-blue-300",
         themeLight: body.themeLight || "bg-blue-50",
+        screenshots: body.screenshots && body.screenshots.length > 0 ? {
+          create: body.screenshots.map((url: string) => ({ url }))
+        } : undefined,
       },
     });
     return NextResponse.json(project);

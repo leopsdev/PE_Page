@@ -132,7 +132,7 @@ export default function NewsPageContent({ initialNews = [] }: { initialNews?: an
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="flex flex-wrap gap-2 items-center text-xs font-bold text-brand-400 mb-2 uppercase tracking-wide">
                     <Calendar size={14} /> {new Date(news.createdAt).toLocaleDateString()}
-                    {news.author && news.author !== "Redação" && <span className="px-2 py-0.5 bg-brand-50 text-brand-400 rounded-full">{news.author}</span>}
+                    {news.author && news.author !== "Redação" && <span className="ml-5 px-2 py-0.5 bg-brand-400 text-white rounded-full">{news.author}</span>}
                   </div>
                   <h3 className="text-lg md:text-xl font-bold text-foreground group-hover:text-brand-400 transition-colors">{news.title}</h3>
                   <p className="text-foreground/60 text-sm mt-1 line-clamp-2">{news.content}</p>

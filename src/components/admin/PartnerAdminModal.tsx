@@ -84,8 +84,8 @@ export function PartnerAdminModal({ isOpen, onClose }: { isOpen: boolean; onClos
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
             <form onSubmit={handleSave} className="space-y-4">
               <h3 className="text-lg font-medium text-white mb-2">{editingId ? "Editar Parceiro" : "Novo Parceiro"}</h3>
-              <input required placeholder="Nome do Parceiro" value={formData.name || ""} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
-              <input placeholder="Caminho da foto (ex: /logo.png) ou Link URL" value={formData.image || ""} onChange={e => setFormData({ ...formData, image: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
+              <input required placeholder="Nome do Parceiro" value={formData.name || ""} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50" />
+              <input placeholder="Caminho da foto (ex: /logo.png) ou Link URL" value={formData.image || ""} onChange={e => setFormData({ ...formData, image: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50" />
               <p className="text-white/40 text-xs mt-1">Para fotos locais, basta salvar a imagem na pasta <strong>public</strong> do projeto e digitar <strong>/nome-do-arquivo.png</strong>.</p>
               <div className="flex gap-2">
                 <button type="button" onClick={() => { setEditingId(null); setFormData({}); }} className="flex-1 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 transition">Cancelar</button>

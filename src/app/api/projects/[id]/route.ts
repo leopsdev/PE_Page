@@ -19,6 +19,10 @@ export async function PUT(request: Request, context: { params: Promise<{ id: str
         themePrimary: body.themePrimary,
         themeSecondary: body.themeSecondary,
         themeLight: body.themeLight,
+        screenshots: body.screenshots ? {
+          deleteMany: {},
+          create: body.screenshots.map((url: string) => ({ url }))
+        } : undefined,
       },
     });
     

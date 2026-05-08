@@ -123,19 +123,19 @@ export function NewsAdminModal({ isOpen, onClose }: { isOpen: boolean; onClose: 
               <h3 className="text-lg font-medium text-white mb-2">{editingId ? "Editar Notícia" : "Nova Notícia"}</h3>
 
               <div className="flex gap-2">
-                <input required placeholder="URL da Notícia Original" value={formData.sourceUrl || ""} onChange={e => setFormData({ ...formData, sourceUrl: e.target.value })} className="flex-1 bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
+                <input required placeholder="URL da Notícia Original" value={formData.sourceUrl || ""} onChange={e => setFormData({ ...formData, sourceUrl: e.target.value })} className="flex-1 bg-black/20 border border-white/10 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50" />
                 <button type="button" onClick={handleScrape} disabled={scraping} className="bg-blue-600 hover:bg-blue-500 text-white rounded-lg px-4 flex items-center justify-center transition disabled:opacity-50" title="Extrair dados via URL">
                   {scraping ? <Loader2 size={20} className="animate-spin" /> : <DownloadCloud size={20} />}
                 </button>
               </div>
 
               <form onSubmit={handleSave} className="space-y-4">
-                <input required placeholder="Manchete / Título" value={formData.title || ""} onChange={e => setFormData({ ...formData, title: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
-                <input placeholder="Autor da Matéria (Ex: Redação / Nome)" value={formData.author || ""} onChange={e => setFormData({ ...formData, author: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
-                <textarea required placeholder="Resumo / Conteúdo da Notícia" rows={4} value={formData.content || ""} onChange={e => setFormData({ ...formData, content: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white resize-none" />
+                <input required placeholder="Manchete / Título" value={formData.title || ""} onChange={e => setFormData({ ...formData, title: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50" />
+                <input placeholder="Autor da Matéria (Ex: Redação / Nome)" value={formData.author || ""} onChange={e => setFormData({ ...formData, author: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50" />
+                <textarea required placeholder="Resumo / Conteúdo da Notícia" rows={4} value={formData.content || ""} onChange={e => setFormData({ ...formData, content: e.target.value })} className="w-full bg-black/20 border border-white/10 rounded-lg p-2.5 text-white resize-none focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50" />
                 <div className="flex gap-4">
-                  <input placeholder="URL da Capa (opcional)" value={formData.imageUrl || ""} onChange={e => setFormData({ ...formData, imageUrl: e.target.value })} className="flex-1 w-48 bg-black/20 border border-white/10 rounded-lg p-2.5 text-white" />
-                  <input type="datetime-local" title="Data/Hora Exata da Publicação Original" value={formData.publishedAt ? new Date(formData.publishedAt).toISOString().slice(0, 16) : ""} onChange={e => setFormData({ ...formData, publishedAt: new Date(e.target.value).toISOString() })} className="w-48 bg-black/20 border border-white/10 rounded-lg p-2.5 text-white/50" />
+                  <input placeholder="URL da Capa (opcional)" value={formData.imageUrl || ""} onChange={e => setFormData({ ...formData, imageUrl: e.target.value })} className="flex-1 w-48 bg-black/20 border border-white/10 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50" />
+                  <input type="datetime-local" title="Data/Hora Exata da Publicação Original" value={formData.publishedAt ? new Date(formData.publishedAt).toISOString().slice(0, 16) : ""} onChange={e => setFormData({ ...formData, publishedAt: new Date(e.target.value).toISOString() })} className="w-48 bg-black/20 border border-white/10 rounded-lg p-2.5 text-white/50 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50" />
                 </div>
 
                 <div className="flex gap-2">
