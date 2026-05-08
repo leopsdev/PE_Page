@@ -27,10 +27,7 @@ model Project {
   themePrimary     String
   themeSecondary   String
   themeLight       String
-<<<<<<< Updated upstream
   link             String?
-=======
->>>>>>> Stashed changes
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   screenshots      ProjectScreenshot[]
