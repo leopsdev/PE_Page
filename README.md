@@ -1,4 +1,4 @@
-# Programa EfiCiência - Plataforma Web
+# Programa Eficiência - Plataforma Web
 
 Bem-vindo ao repositório oficial da plataforma web do **Programa EfiCiência**, uma aplicação full-stack moderna construída para exibir e gerenciar projetos organizacionais, parceiros e colaboradores através de uma interface elegante, performática e interativa.
 
