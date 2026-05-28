@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String?
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id               String   @id @default(uuid())
+  title            String
+  nickname         String?
+  shortDescription String
+  fullDescription  String
+  image            String
+  technologies     String 
+  themePrimary     String
+  themeSecondary   String
+  themeLight       String
+  link             String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  screenshots      ProjectScreenshot[]
+}
+
+model ProjectScreenshot {
+  id        String   @id @default(uuid())
+  url       String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model Collaborator {
+  id        String   @id @default(uuid())
+  name      String
+  role      String?
+  lattes    String?
+  linkedin  String?
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Partner {
+  id        String   @id @default(uuid())
+  name      String
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ClippingNews {
+  id        String   @id @default(uuid())
+  title     String
+  author    String   @default("Redação")
+  content   String
+  sourceUrl String
+  imageUrl  String?
+  videoUrl    String?
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
